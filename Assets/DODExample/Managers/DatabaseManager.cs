@@ -6,9 +6,10 @@ namespace DODExample
 {
     public class DatabaseManager : MonoBehaviour
     {
-        public PlayerAttackTable PlayerAttackTable;
-        public PlayerHealthTable PlayerHealthTable;
-        public PlayerCombatTable PlayerCombatTable;
+        public PlayerAttackTable   PlayerAttackTable;
+        public PlayerHealthTable   PlayerHealthTable;
+        public PlayerCombatTable   PlayerCombatTable;
+        public PlayerPositionTable PlayerPositionTable;
 
         #region Singleton
 
@@ -28,28 +29,18 @@ namespace DODExample
             }
 
             Initialize();
+            Application.targetFrameRate = 60;
         }
 
         #endregion
 
         private void Initialize()
         {
-            PlayerAttackTable = new PlayerAttackTable(new PlayerAttackData
-            {
-                PlayerIDs = new[] { 1, 2, 3, 4, 5 },
-                Damage    = new[] { 10, 10, 10, 10, 10 }
-            });
-            PlayerHealthTable = new PlayerHealthTable(new PlayerHealthData
-            {
-                PlayerIDs = new[] { 1, 2, 3, 4, 5 },
-                Hp        = new[] { 50, 50, 50, 50, 50 },
-                IsDead    = new[] { false, false, false, false, false }
-            });
-            PlayerCombatTable = new PlayerCombatTable(new PlayerCombatData
-            {
-                AttackerIDs = new[] { 1, 1 },
-                TargetIDs   = new[] { 2, 3 },
-            });
+            PlayerAttackTable = new PlayerAttackTable(new PlayerAttackData(){PlayerIDs = new string[]{},Damage = new int[]{}});
+            PlayerHealthTable = new PlayerHealthTable(new PlayerHealthData(){PlayerIDs = new string[]{}, Hp = new int[]{}, IsDead = new bool[]{}});
+            PlayerCombatTable = new PlayerCombatTable(new PlayerCombatData(){AttackerIDs = new string[]{},TargetIDs = new string[]{}});
+            PlayerPositionTable = new PlayerPositionTable(new PlayerPositionData()
+                { PlayerIDs = new string[] { }, Positions = new Vector3[] { } });
         }
     }
 }

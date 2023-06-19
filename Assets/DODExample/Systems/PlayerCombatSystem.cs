@@ -11,7 +11,7 @@ namespace DODExample
                 Process();
             }
         }
-
+        
         protected override void Process()
         {
             var table = _databaseManager.PlayerCombatTable;
@@ -29,14 +29,12 @@ namespace DODExample
             }
         }
 
-        private void CalculateDamage(int attackerId, int targetId)
+        private void CalculateDamage(string attackerId, string targetId)
         {
             var attackerDamage = _databaseManager.PlayerAttackTable.GetDamageByPlayerID(attackerId);
             var targetHealth   = _databaseManager.PlayerHealthTable.GetHealthByPlayerID(targetId);
             targetHealth -= attackerDamage;
             _databaseManager.PlayerHealthTable.SetHealthByPlayerID(targetId, targetHealth);
-            Debug.Log(
-                $"Player {attackerId} deal {attackerDamage} damage to player {targetId}. Player {targetId} health is {targetHealth}");
         }
 
         private void RemoveRecord(int index)

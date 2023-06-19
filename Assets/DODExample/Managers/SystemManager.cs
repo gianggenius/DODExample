@@ -50,6 +50,7 @@ namespace DODExample
         {
             _systems.Add(new PlayerCombatSystem());
             _systems.Add(new PlayerDeadSystem());
+            _systems.Add(new PlayerMovementSystem());
         }
     }
 }

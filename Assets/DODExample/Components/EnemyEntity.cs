@@ -5,7 +5,7 @@ namespace DODExample.Components
 {
     public class EnemyEntity:MonoBehaviour,IEntity
     {
-        [field:SerializeField] public int UniqueId { get; set; }
+        [field:SerializeField] public string UniqueId { get; set; }
 
         [SerializeField] private int                hp;
         [SerializeField] private PlayerHealthRecord record;

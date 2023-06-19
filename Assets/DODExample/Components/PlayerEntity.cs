@@ -1,15 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DODExample.Components
 {
-    public class PlayerEntity:MonoBehaviour, IEntity
+    public class PlayerEntity : MonoBehaviour, IEntity
     {
-        [field:SerializeField] public int UniqueId { get; set; }
+        [field: SerializeField] public string UniqueId { get; set; }
 
-        [SerializeField] private int                hp;
-        [SerializeField] private PlayerHealthRecord record;
-        
+        [SerializeField] private int                  hp;
+        [SerializeField] private PlayerHealthRecord   health;
+        [SerializeField] private PlayerPositionRecord position;
+
+
         private void Update()
         {
             SynchronizeEntityData();
@@ -17,7 +20,9 @@ namespace DODExample.Components
 
         private void SynchronizeEntityData()
         {
-            record = DatabaseManager.Instance.PlayerHealthTable.GetRecordByPlayerID(UniqueId);
+            health             = DatabaseManager.Instance.PlayerHealthTable.GetRecordByPlayerID(UniqueId);
+            position           = DatabaseManager.Instance.PlayerPositionTable.GetRecordByPlayerID(UniqueId);
+            transform.position = position.Position;
         }
     }
 }

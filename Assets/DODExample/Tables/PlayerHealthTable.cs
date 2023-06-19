@@ -4,7 +4,7 @@ namespace DODExample
 {
     public class PlayerHealthTable:BaseTable<PlayerHealthData, PlayerHealthRecord>
     {
-        public int GetPlayerID(int index)
+        public string GetPlayerID(int index)
         {
             return data.PlayerIDs[index];
         }
@@ -14,22 +14,22 @@ namespace DODExample
             return data.Hp[index];
         }
         
-        public int GetIndexByPlayerID(int playerID)
+        public int GetIndexByPlayerID(string playerID)
         {
             return Array.IndexOf(data.PlayerIDs,playerID);
         }
         
-        public int GetHealthByPlayerID(int playerID)
+        public int GetHealthByPlayerID(string playerID)
         {
             return data.Hp[GetIndexByPlayerID(playerID)];
         }
         
-        public bool GetDeadStatusByPlayerID(int playerID)
+        public bool GetDeadStatusByPlayerID(string playerID)
         {
             return data.IsDead[GetIndexByPlayerID(playerID)];
         }
         
-        public PlayerHealthRecord GetRecordByPlayerID(int playerID)
+        public PlayerHealthRecord GetRecordByPlayerID(string playerID)
         {
             return GetRecordByIndex(GetIndexByPlayerID(playerID));
         }
@@ -43,7 +43,7 @@ namespace DODExample
             data.IsDead[index] = isDead;
         }
         
-        public void SetHealthByPlayerID(int playerID, int hp)
+        public void SetHealthByPlayerID(string playerID, int hp)
         {
             data.Hp[GetIndexByPlayerID(playerID)] = hp;
         }

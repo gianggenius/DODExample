@@ -2,13 +2,13 @@ namespace DODExample
 {
     public class PlayerCombatData : ITableData
     {
-        public int[] AttackerIDs;
-        public int[] TargetIDs;
+        public string[] AttackerIDs;
+        public string[] TargetIDs;
     }
     
     public class PlayerCombatRecord:ITableRecordData
     {
-        public int AttackerID;
-        public int TargetID;
+        public string AttackerID;
+        public string TargetID;
     }
 }

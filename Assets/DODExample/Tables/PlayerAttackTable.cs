@@ -4,17 +4,17 @@ namespace DODExample
 {
     public class PlayerAttackTable:BaseTable<PlayerAttackData, PlayerAttackRecord>
     {
-        public int GetPlayerID(int index)
+        public string GetPlayerID(int index)
         {
             return data.PlayerIDs[index];
         }
         
-        public int GetIndexByPlayerID(int playerID)
+        public int GetIndexByPlayerID(string playerID)
         {
             return Array.IndexOf(data.PlayerIDs, playerID);
         }
         
-        public int GetDamageByPlayerID(int playerID)
+        public int GetDamageByPlayerID(string playerID)
         {
             return data.Damage[GetIndexByPlayerID(playerID)];
         }
